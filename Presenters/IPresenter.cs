@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Presenters
 {
-    public interface IPresenter
+    public interface IPresenter<FormatDataType>
     {
+        public FormatDataType Content { get; }
     }
 }

@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Presenters\Presenters.csproj" />
+    <ProjectReference Include="..\Repositories.EFCore\Repositories.EFCore.csproj" />
+  </ItemGroup>
+
 </Project>

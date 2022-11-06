@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Entities.Interfaces;
+using Presenters;
+using Repositories.EFCore.DataContext;
+using Repositories.EFCore.Repositories;
 
 namespace IoC
 {
-    public class DependencyContainer
+    public static class DependencyContainer
     {
+        public static IServiceCollection AddNorthWindServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddDbContext<MusicfyContext>(options => options.UseSqlServer(configuration.GetConnectionString("MusicfyDB")));
+           
+            return services;
+        }
     }
 }
