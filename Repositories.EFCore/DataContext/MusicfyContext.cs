@@ -24,6 +24,7 @@ namespace Repositories.EFCore.DataContext
                 .HasData(
                 new Album
                 {
+                    Id = 1,
                     Name = "El Ultimo Tour del Mundo",
                     Artist = "Bad Bunny",
                     Year = 2020,
@@ -32,6 +33,7 @@ namespace Repositories.EFCore.DataContext
                 },
                 new Album
                 {
+                    Id = 2,
                     Name = "¿A Donde Vamos?",
                     Artist = "Morat",
                     Year = 2021,
