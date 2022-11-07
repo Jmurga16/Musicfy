@@ -1,5 +1,6 @@
 ﻿using Entities.Interfaces;
 using Entities.POCOEntities;
+using Microsoft.EntityFrameworkCore;
 using Repositories.EFCore.DataContext;
 
 
@@ -16,25 +17,33 @@ namespace Repositories.EFCore.Repositories
             Context.Add(album);
         }
 
-        //Listar Todo
+        //Listar (Estado Activo)
         public IEnumerable<Album> GetAlbums()
         {
-            return Context.Albums.ToList();
+            return Context.Albums.Where(c => c.Status == true).ToList();
+        }
+
+        //Numero de albumes creados
+        public int RowCount()
+        {
+            return Context.Albums.Where(c => c.Status == true).Count();
         }
 
         //Actualizar
         public void Update(Album album)
         {
             Context.Update(album);
+
         }
 
         //Eliminado Lógico
-        public void Delete(Album album)
+        public void Delete(int id)
         {
-            Context.Albums
-                .Where(p => p.Id == album.Id)
-                .ToList()
-                .ForEach(x => x.Status = album.Status);
+            Album album1 = Context.Albums.Find(id);
+            Context.Albums.Attach(album1);
+            album1.Status = false;
+            Context.Entry(album1).Property(x => x.Status).IsModified = true;
+            Context.SaveChanges();
         }
 
     }

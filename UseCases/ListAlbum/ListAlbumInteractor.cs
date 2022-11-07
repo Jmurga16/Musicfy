@@ -29,7 +29,7 @@ namespace UseCases.ListAlbum
             }
             catch (Exception ex)
             {
-                throw new GeneralException("Error al listar productos.", ex.Message);
+                throw new GeneralException("Error al listar album.", ex.Message);
             }
 
             await OutputPort.Handle(response);

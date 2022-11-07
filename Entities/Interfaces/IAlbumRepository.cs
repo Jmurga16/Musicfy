@@ -7,7 +7,8 @@ namespace Entities.Interfaces
     {
         void Create(Album album);
         IEnumerable<Album> GetAlbums();
+        int RowCount();
         void Update(Album album);   
-        void Delete(Album album);
+        void Delete(int Id);
     }
 }

@@ -1,10 +1,12 @@
 ﻿using Entities.Interfaces;
+using Entities.POCOEntities;
 using Repositories.EFCore.DataContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UseCasesDTOs.FormAlbum;
 
 namespace Repositories.EFCore.Repositories
 {
@@ -17,5 +19,16 @@ namespace Repositories.EFCore.Repositories
         {
             return Context.SaveChangesAsync();
         }
+
+        public void UpdateChangesAsync(Album request)
+        {
+            Context.Albums.Update(request);
+        }
+
+        public void DeleteChangesAsync(Album request)
+        {
+            Context.Albums.Update(request);
+        }
+
     }
 }

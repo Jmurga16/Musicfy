@@ -11,8 +11,4 @@
     <ProjectReference Include="..\UseCasesDTOs\UseCasesDTOs.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="FormAlbum\" />
-  </ItemGroup>
-
 </Project>
