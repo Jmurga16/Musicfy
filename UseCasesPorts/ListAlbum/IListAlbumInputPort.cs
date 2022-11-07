@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Interfaces
+namespace UseCasesPorts.ListAlbum
 {
-    public interface IUnitOfWork
+    public interface IListAlbumInputPort
     {
-        Task<int> SaveChangesAsync();
+        Task GetAlbums();
     }
 }

@@ -6,15 +6,25 @@ using Entities.Interfaces;
 using Presenters;
 using Repositories.EFCore.DataContext;
 using Repositories.EFCore.Repositories;
+using UseCasesPorts.ListAlbum;
+using UseCases.ListAlbum;
+using Presenters.ListAlbum;
 
 namespace IoC
 {
     public static class DependencyContainer
     {
-        public static IServiceCollection AddNorthWindServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddMusicfyServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<MusicfyContext>(options => options.UseSqlServer(configuration.GetConnectionString("MusicfyDB")));
-           
+            services.AddDbContext<MusicfyContext>(options => options.UseSqlServer(configuration.GetConnectionString("connectionString")));
+
+
+            services.AddScoped<IAlbumRepository, AlbumRepository>();        
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddScoped<IListAlbumInputPort, ListAlbumInteractor>();
+            services.AddScoped<IListAlbumOutputPort, ListAlbumPresenter>();
+
             return services;
         }
     }
